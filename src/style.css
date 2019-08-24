@@ -93,3 +93,20 @@ button>span {
 .clicked {
   background: darkcyan;
 }
+
+ul#wordsModal {
+  position: absolute;
+  background: white;
+  text-align: center;
+  font-size: 2rem;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: auto;
+}
+
+ul#wordsModal>li {
+  width: 100vw;
+  padding: 5px;
+
+}

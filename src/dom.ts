@@ -4,3 +4,4 @@ export const wordElement = el("word");
 export const deleteButton = el("delete")
 export const submitButton = el("submit")
 export const scoreElement = el("score")
+export const wordsModal = el("wordsModal")

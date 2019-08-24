@@ -14,12 +14,13 @@ html(lang="en")
 
         header 
             h1 #{msg} 
-            h3(id="score") 0
+            h3#score 0
+            ul#wordsModal
         #word word
         #grid
         .btn-group
-            button(id="delete") delete
-            button(id="submit") submit
+            button#delete delete
+            button#submit submit
 
         footer
             span made with ❤️ by 

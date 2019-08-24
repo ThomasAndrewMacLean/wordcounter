@@ -3,7 +3,8 @@ import {
     wordElement,
     deleteButton,
     submitButton,
-    scoreElement
+    scoreElement,
+    wordsModal
 } from "./dom"
 import {
     BOARDSIZE,
@@ -13,7 +14,7 @@ import {
 
 
 import("./style.css")
-console.log("hoelloo worldd! 🐛")
+
 let word = [];
 let cellClicked = []
 let score = 0;
@@ -81,5 +82,17 @@ submitButton.addEventListener("click", () => {
     })
 
 
+})
+
+scoreElement.addEventListener("click", () => {
+    wordsFound.forEach(w => {
+        const item = document.createElement("li");
+        item.innerText = w;
+        wordsModal.appendChild(item)
+    })
+})
+
+wordsModal.addEventListener("click", () => {
+    wordsModal.innerHTML = "";
 })
 setupBoard()
