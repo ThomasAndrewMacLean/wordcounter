@@ -6,6 +6,9 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title #{msg}
+        link(rel="manifest", href="./assets/site.webmanifest" )
+        link(rel="shortcut icon" ,type="image/x-icon", href="./assets/favicon.ico")
+        meta(name="theme-color", content="#90ee9080")
     body
         header 
             h1 #{msg} 
@@ -15,3 +18,23 @@ html(lang="en")
         .btn-group
             button(id="delete") delete
             button(id="submit") submit
+
+        footer
+            span made with ❤️ by 
+                a(href="mailto:hello@thomasmaclean.be?subject=Hi") thomasmaclean
+                span(id="year")
+
+        script.
+            if ('serviceWorker' in navigator) {
+                console.log("🤖")
+
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./service-worker.js')
+                        .then((reg) => {
+                            console.log('Service worker registered.', reg);
+                        });
+                });
+            }
+
+        script.
+            document.getElementById("year").innerText=" © " + new Date().getFullYear()

@@ -1,6 +1,10 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const {
+    GenerateSW
+} = require('workbox-webpack-plugin');
 
 
 module.exports = {
@@ -14,6 +18,10 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.json']
     },
     plugins: [
+        new CopyPlugin([{
+            from: 'src/assets',
+            to: 'assets'
+        }]),
         new HtmlWebpackPlugin({
             template: './src/index.pug'
         }),
@@ -22,7 +30,10 @@ module.exports = {
             // both options are optional
             filename: '[name].css',
             chunkFilename: '[id].css'
-        })
+        }),
+        new GenerateSW({
+            skipWaiting: true
+        }),
     ],
     module: {
         rules: [
