@@ -7,9 +7,10 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title #{msg}
     body
-        h1 #{msg}
+        header 
+            h1 #{msg} 
+            h3(id="score") 0
         #word word
-        #score 0
         #grid
         .btn-group
             button(id="delete") delete

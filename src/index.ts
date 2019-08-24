@@ -60,7 +60,7 @@ submitButton.addEventListener("click", () => {
     cellClicked = [];
     document.querySelectorAll(".clicked").forEach(b => b.classList.remove('clicked'))
     wordElement.innerHTML = word.join("");
-    
+
     if (!wordToSend.length || wordsFound.includes(wordToSend)) {
         return
 

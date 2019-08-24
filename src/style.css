@@ -17,7 +17,16 @@ body {
 h1 {
   text-transform: capitalize;
 }
-
+#word {
+  font-size: 1.5rem;
+  height: 2rem;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 300px;
+}
 #grid {
   border: 2px solid lightblue;
 
@@ -25,7 +34,7 @@ h1 {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 button {
