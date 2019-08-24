@@ -49,6 +49,39 @@ header {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
+#grid.wrong {
+  border: 2px solid red;
+
+  box-shadow: inset 0px 0px 20px 1px red;
+}
+
+#grid.wrong>button {
+  border: 2px solid red !important;
+
+}
+
+#grid.duplicate {
+  border: 2px solid blue;
+
+  box-shadow: inset 0px 0px 20px 1px blue;
+}
+
+#grid.duplicate>button {
+  border: 2px solid blue !important;
+
+}
+
+#grid.good {
+  border: 2px solid green;
+
+  box-shadow: inset 0px 0px 20px 1px green;
+}
+
+#grid.good>button {
+  border: 2px solid green !important;
+
+}
+
 button {
   padding: 20% 0;
   width: 100%;

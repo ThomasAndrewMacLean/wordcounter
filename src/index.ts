@@ -56,16 +56,28 @@ deleteButton.addEventListener("click", () => {
 });
 
 submitButton.addEventListener("click", () => {
+    // prevent sending letters;
+    if (word.length === 1) return;
     const wordToSend = word.join("")
     word = []
     cellClicked = [];
     document.querySelectorAll(".clicked").forEach(b => b.classList.remove('clicked'))
     wordElement.innerHTML = word.join("");
 
-    if (!wordToSend.length || wordsFound.includes(wordToSend)) {
+    if (!wordToSend.length) {
         return
 
     };
+
+    if (wordsFound.includes(wordToSend)) {
+        grid.classList.add("duplicate")
+
+        setTimeout(() => {
+            grid.classList.remove("duplicate")
+        }, 600)
+
+        return
+    }
 
 
 
@@ -76,8 +88,18 @@ submitButton.addEventListener("click", () => {
             scoreElement.innerHTML = score
 
             wordsFound.push(wordToSend);
+            grid.classList.add("good")
+
+            setTimeout(() => {
+                grid.classList.remove("good")
+            }, 600)
         } else {
             // wrong word
+            grid.classList.add("wrong")
+
+            setTimeout(() => {
+                grid.classList.remove("wrong")
+            }, 600)
         }
     })
 
