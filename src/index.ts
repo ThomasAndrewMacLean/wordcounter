@@ -54,8 +54,8 @@ const setupBoard = (savedGame = "") => {
     for (let i = 0; i < BOARDSIZE; i++) {
         const btn = document.createElement("button");
         const span = document.createElement("span");
-        const letter = getLetter();
-        span.innerHTML = savedGame && savedGame[i] || letter;
+        const letter = savedGame && savedGame[i] || getLetter();
+        span.innerHTML = letter;
         const span2 = document.createElement("span");
         span2.innerHTML = points[letter];
         gridId += letter;
@@ -110,7 +110,7 @@ submitButton.addEventListener("click", () => {
             score += points
             scoreElement.innerHTML = score
 
-            wordsFound.push(wordToSend + ` (${points})`);
+            wordsFound.push(wordToSend);
             grid.classList.add("good")
 
             setTimeout(() => {
@@ -157,7 +157,7 @@ saveButton.addEventListener("click", () => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: "Thomas",
+            name,
             gridId,
             wordsFound,
             score
