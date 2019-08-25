@@ -34,6 +34,13 @@ let cellClicked
 let score;
 let gridId;
 let wordsFound;
+let name = window.localStorage.getItem("userName")
+if (!name) {
+    name = prompt("Vul u naam in aub")
+    if (name) {
+        window.localStorage.setItem("userName", name)
+    }
+}
 
 const setupBoard = (savedGame = "") => {
     word = [];
@@ -127,10 +134,18 @@ scoreElement.addEventListener("click", () => {
         const item = document.createElement("li");
         item.innerText = w;
         wordsModal.appendChild(item)
-    })
-})
 
+    })
+
+    window.history.pushState({}, "page", "?words")
+})
+window.onpopstate = () => {
+    wordsModal.innerHTML = ""
+};
 wordsModal.addEventListener("click", () => {
+    //TODO keep the hash value!
+    window.history.pushState({}, "page", "")
+
     wordsModal.innerHTML = "";
 })
 
@@ -148,7 +163,18 @@ saveButton.addEventListener("click", () => {
             score
         })
 
-    }).then(jsonData => jsonData.json()).then(data => console.log(data))
+    }).then(jsonData => jsonData.json()).then(data => {
+        history.pushState(null, null, "#" + data.body.split('"').join(""));
+        console.log(data)
+        if (navigator.share) {
+
+            navigator.share({
+                title: "Doe jij beter?",
+                text: `Ik haalde hier ${score} punten`,
+                url: window.location.href,
+            });
+        }
+    })
 })
 
 if (window.location.hash) {
