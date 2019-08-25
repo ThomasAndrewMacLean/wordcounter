@@ -20,11 +20,6 @@ import {
 
 import("./style.css")
 
-let word = [];
-let cellClicked = []
-let score = 0;
-let gridId = "";
-const wordsFound = [];
 
 
 const addLetter = (e: HTMLButtonElement, index: number, letter: string) => {
@@ -34,10 +29,20 @@ const addLetter = (e: HTMLButtonElement, index: number, letter: string) => {
     cellClicked.push(index)
     wordElement.innerHTML = word.join("");
 }
+let word
+let cellClicked
+let score;
+let gridId;
+let wordsFound;
 
 const setupBoard = (savedGame = "") => {
+    word = [];
+    cellClicked = []
+    score = 0;
+    gridId = "";
+    wordsFound = [];
+
     grid.innerHTML = ""
-    score = 0
     scoreElement.innerHTML = score
     for (let i = 0; i < BOARDSIZE; i++) {
         const btn = document.createElement("button");
