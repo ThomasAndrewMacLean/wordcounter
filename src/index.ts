@@ -34,6 +34,8 @@ let cellClicked
 let score;
 let gridId;
 let wordsFound;
+let opponentScore = 0;
+let opponentWords = [];
 let name = window.localStorage.getItem("userName")
 if (!name) {
     name = prompt("Vul u naam in aub")
@@ -111,6 +113,16 @@ submitButton.addEventListener("click", () => {
             scoreElement.innerHTML = score
 
             wordsFound.push(wordToSend);
+
+
+            if (score > opponentScore) {
+                window.navigator.vibrate(150)
+            }
+            if (!opponentWords.includes(wordToSend)) {
+                window.navigator.vibrate([100, 30, 100])
+            }
+
+
             grid.classList.add("good")
 
             setTimeout(() => {
@@ -132,7 +144,7 @@ submitButton.addEventListener("click", () => {
 scoreElement.addEventListener("click", () => {
     wordsFound.forEach(w => {
         const item = document.createElement("li");
-        item.innerText = w;
+        item.innerText = w + ` (${getWordValue(w)})`;
         wordsModal.appendChild(item)
 
     })
@@ -185,6 +197,13 @@ if (window.location.hash) {
         const prevGame = JSON.parse(data.body)
         console.log(prevGame);
         if (prevGame.Item) {
+            opponentScore = prevGame.Item.score.N;
+            opponentWords = prevGame.Item.wordsFound.L.map(x => x.S)
+
+            console.log(opponentScore);
+
+            console.log(opponentWords);
+
             setupBoard(prevGame.Item.gridId.S)
         } else {
             setupBoard()
