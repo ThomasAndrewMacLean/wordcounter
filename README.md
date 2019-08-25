@@ -1,5 +1,10 @@
 # wordcounter
 
+TODO:
+- promt for name
+- load data
+
+
 This game uses the Dutch word list from Opentaal
 
 Licence Opentaal:

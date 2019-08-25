@@ -4,13 +4,18 @@ import {
     deleteButton,
     submitButton,
     scoreElement,
-    wordsModal
+    wordsModal,
+    saveButton
 } from "./dom"
 import {
     BOARDSIZE,
     getLetter,
-    URL
+    URL,
+    points
 } from './constanst'
+import {
+    getWordValue
+} from "./utils";
 
 
 import("./style.css")
@@ -18,6 +23,7 @@ import("./style.css")
 let word = [];
 let cellClicked = []
 let score = 0;
+let gridId = "";
 const wordsFound = [];
 
 
@@ -29,7 +35,7 @@ const addLetter = (e: HTMLButtonElement, index: number, letter: string) => {
     wordElement.innerHTML = word.join("");
 }
 
-const setupBoard = () => {
+const setupBoard = (savedGame = "") => {
     grid.innerHTML = ""
     score = 0
     scoreElement.innerHTML = score
@@ -37,13 +43,17 @@ const setupBoard = () => {
         const btn = document.createElement("button");
         const span = document.createElement("span");
         const letter = getLetter();
-        span.innerHTML = letter;
-
+        span.innerHTML = savedGame && savedGame[i] || letter;
+        const span2 = document.createElement("span");
+        span2.innerHTML = points[letter];
+        gridId += letter;
         btn.id = "btn-" + i;
         btn.addEventListener("click", (e) => addLetter(e, i, letter))
         btn.appendChild(span)
+        btn.appendChild(span2)
         grid.appendChild(btn)
     }
+
 }
 
 
@@ -81,13 +91,14 @@ submitButton.addEventListener("click", () => {
 
 
 
-    fetch(URL + wordToSend).then(data => data.json()).then(status => {
+    fetch(URL + "?word=" + wordToSend).then(data => data.json()).then(status => {
         if (status.statusCode === 200) {
             // good word
-            score += wordToSend.length;
+            const points = getWordValue(wordToSend);
+            score += points
             scoreElement.innerHTML = score
 
-            wordsFound.push(wordToSend);
+            wordsFound.push(wordToSend + ` (${points})`);
             grid.classList.add("good")
 
             setTimeout(() => {
@@ -117,4 +128,37 @@ scoreElement.addEventListener("click", () => {
 wordsModal.addEventListener("click", () => {
     wordsModal.innerHTML = "";
 })
-setupBoard()
+
+saveButton.addEventListener("click", () => {
+    fetch(URL + "/database", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: "Thomas",
+            gridId,
+            wordsFound,
+            score
+        })
+
+    }).then(jsonData => jsonData.json()).then(data => console.log(data))
+})
+
+if (window.location.hash) {
+    console.log(' window.location.hash', window.location.hash);
+    fetch(URL + "/database?id=" + window.location.hash.replace("#", ""), {
+        method: 'GET',
+    }).then(jsonData => jsonData.json()).then(data => {
+        const prevGame = JSON.parse(data.body)
+        console.log(prevGame);
+        if (prevGame.Item) {
+            setupBoard(prevGame.Item.gridId.S)
+        } else {
+            setupBoard()
+        }
+    })
+} else {
+    setupBoard()
+}
