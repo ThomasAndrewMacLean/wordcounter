@@ -1,7 +1,8 @@
-import { grid, wordElement, deleteButton, submitButton, scoreElement, wordsModal, saveButton } from './dom';
+import { grid, wordElement, deleteButton, submitButton, scoreElement, wordsModal, saveButton, newGameButton } from './dom';
 import { BOARDSIZE, URL } from './constanst';
 import { getLetter, getWordValue, getUserName, getPoint } from './utils';
 import{OpponentGameType} from "./types"
+
 import './style.css';
 
 let word: string[];
@@ -131,6 +132,10 @@ wordsModal.addEventListener('click', () => {
     wordsModal.innerHTML = '';
 });
 
+newGameButton.addEventListener("click",() => {
+
+  setupBoard()  
+})
 saveButton.addEventListener('click', () => {
     fetch(URL + '/database', {
         method: 'POST',

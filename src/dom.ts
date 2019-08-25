@@ -7,3 +7,4 @@ export const submitButton = el('submit');
 export const scoreElement = el('score');
 export const wordsModal = el('wordsModal');
 export const saveButton = el('save');
+export const newGameButton = el("newGame")

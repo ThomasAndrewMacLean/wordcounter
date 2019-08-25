@@ -1,182 +1,177 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  --wrong: red;
-  --good: green;
-  --border: lightblue;
-  --duplicate: blue;
-  --clicked: darkcyan;
-  --background: white;
-  --background-modal: white;
+    --wrong: red;
+    --good: green;
+    --border: lightblue;
+    --duplicate: blue;
+    --clicked: darkcyan;
+    --background: white;
+    --background-modal: white;
 }
 
 @font-face {
-  font-family: "Livvic";
-  font-weight: 400;
-  font-style: normal;
-  src: url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
-  font-display: swap;
+    font-family: 'Livvic';
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
+    font-display: swap;
 }
 
 body {
-  height: 100vh;
-  width: 100%;
-  background: var(--background);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  font-family: 'Livvic', "Helvetica", "Arial", sans-serif;
+    height: 100vh;
+    width: 100%;
+    background: var(--background);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'Livvic', 'Helvetica', 'Arial', sans-serif;
 }
 
 h1 {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 #score {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #word {
-  font-size: 1.5rem;
-  height: 2rem;
-  position: relative
+    font-size: 1.5rem;
+    height: 2rem;
+    position: relative;
 }
-
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 300px;
 }
-
+#newGame {
+    padding: 0;
+    width: auto;
+    font-size: 2rem;
+    border: none !important;
+}
 #grid {
-  border: 2px solid var(--border);
-  border-radius: 5px;
-  max-width: 450px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    max-width: 450px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 #grid.wrong {
-  border: 2px solid var(--wrong);
+    border: 2px solid var(--wrong);
 
-  box-shadow: inset 0px 0px 20px 1px var(--wrong);
+    box-shadow: inset 0px 0px 20px 1px var(--wrong);
 }
 
-#grid.wrong>button {
-  border: 2px solid var(--wrong) !important;
-
+#grid.wrong > button {
+    border: 2px solid var(--wrong) !important;
 }
 
 #grid.duplicate {
-  border: 2px solid var(--duplicate);
+    border: 2px solid var(--duplicate);
 
-  box-shadow: inset 0px 0px 20px 1px var(--duplicate);
+    box-shadow: inset 0px 0px 20px 1px var(--duplicate);
 }
 
-#grid.duplicate>button {
-  border: 2px solid var(--duplicate) !important;
-
+#grid.duplicate > button {
+    border: 2px solid var(--duplicate) !important;
 }
 
 #grid.good {
-  border: 2px solid var(--good);
-  ;
-
-  box-shadow: inset 0px 0px 20px 1px var(--good);
-  ;
+    border: 2px solid var(--good);
+    box-shadow: inset 0px 0px 20px 1px var(--good);
 }
 
-#grid.good>button {
-  border: 2px solid var(--good) !important;
-
+#grid.good > button {
+    border: 2px solid var(--good) !important;
 }
 
 button {
-  padding: 20% 0;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  font-family: inherit;
-  cursor: pointer;
-  opacity: 1 !important;
-  border: 2px solid var(--border) !important;
+    padding: 20% 0;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+    opacity: 1 !important;
+    border: 2px solid var(--border) !important;
 }
 
 .btn-group {
-  border: 2px solid var(--border);
-  border-radius: 5px;
-  display: flex;
-  max-width: 450px;
-  height: 80px;
-  width: 100%;
-  margin: 10px 0;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    display: flex;
+    max-width: 450px;
+    height: 80px;
+    width: 100%;
+    margin: 10px 0;
 }
 
-.btn-group>button {
-  padding: 0;
-  font-size: 2rem;
-  /* margin: 0.4rem; */
+.btn-group > button {
+    padding: 0;
+    font-size: 2rem;
+    /* margin: 0.4rem; */
 }
 
 #delete {
-  width: 25%;
+    width: 25%;
 }
 
 #submit {
-  width: 50%;
+    width: 50%;
 }
 
 #save {
-  width: 25%;
+    width: 25%;
 }
 
-button>span:first-of-type {
-  font-size: 5rem;
-  pointer-events: none;
-
+button > span:first-of-type {
+    font-size: 5rem;
+    pointer-events: none;
 }
 
-button>span:last-of-type {
-  /* font-size: 5rem; */
-  pointer-events: none;
-  position: absolute;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-
+button > span:last-of-type {
+    /* font-size: 5rem; */
+    pointer-events: none;
+    position: absolute;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
 
 .clicked {
-  background: var(--clicked);
+    background: var(--clicked);
 }
 
 ul#wordsModal {
-  position: absolute;
-  background: var(--background-modal);
-  text-align: center;
-  font-size: 2rem;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  z-index: 1;
+    position: absolute;
+    background: var(--background-modal);
+    text-align: center;
+    font-size: 2rem;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    z-index: 1;
 }
 
-ul#wordsModal>li {
-  width: 100vw;
-  padding: 5px;
-
+ul#wordsModal > li {
+    width: 100vw;
+    padding: 5px;
 }
