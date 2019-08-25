@@ -1,9 +1,11 @@
 # wordcounter
 
-TODO:
-- promt for name
-- load data
+-   https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb
 
+TODO:
+
+-   promt for name
+-   load data
 
 This game uses the Dutch word list from Opentaal
 
@@ -27,11 +29,11 @@ Licence Opentaal:
    below, liberal licenses at the discretion of the user. We strongly recommend
    to read the applicable license before usage.
    A. BSD (revised version):
-   - Full license text: http://creativecommons.org/licenses/BSD/legalcode
-   - Summary: http://creativecommons.org/licenses/BSD/deed.en
-     B. Creative Commons, Attribution 3.0 (unported)
-   - Full license text: http://creativecommons.org/licenses/by/3.0/legalcode
-   - Summary: http://creativecommons.org/licenses/by/3.0/deed.en
+    - Full license text: http://creativecommons.org/licenses/BSD/legalcode
+    - Summary: http://creativecommons.org/licenses/BSD/deed.en
+      B. Creative Commons, Attribution 3.0 (unported)
+    - Full license text: http://creativecommons.org/licenses/by/3.0/legalcode
+    - Summary: http://creativecommons.org/licenses/by/3.0/deed.en
 7. Support OpenTaal: OpenTaal is a non-profit volunteer project. With your
    (small) financial support OpenTaal will further expand its activities and
    enhance its professionalism. Your donation is welcome at

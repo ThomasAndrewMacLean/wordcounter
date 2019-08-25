@@ -1,19 +1,11 @@
-import {
-    getWordValue
-} from "./utils";
-import {
-    exportAllDeclaration
-} from "@babel/types";
+import { getWordValue } from './utils';
 
-describe("utils", () => {
+describe('utils', () => {
+    it('gives zero for empty string', () => {
+        expect(getWordValue('')).toBe(0);
+    });
 
-    it("gives zero for empty string", () => {
-        expect(getWordValue("")).toBe(0)
-    })
-
-    it("calculates the word value", () => {
-        expect(getWordValue("wowzys")).toBe(24)
-    })
-
-
-})
+    it('calculates the word value', () => {
+        expect(getWordValue('wowzys')).toBe(24);
+    });
+});
