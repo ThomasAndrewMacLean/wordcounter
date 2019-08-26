@@ -7,11 +7,19 @@
 :root {
     --wrong: red;
     --good: green;
-    --border: lightblue;
+    --border: #fafafa;
     --duplicate: blue;
-    --clicked: darkcyan;
-    --background: white;
-    --background-modal: white;
+    --clicked: #7cf2ec;
+    --background: linear-gradient(#fac935, #efabd0, #7cf2ec);
+    --background-button: #353236;
+    --background-modal: linear-gradient(#fac935, #efabd0, #7cf2ec);
+    --colour-button: #fafafa;
+    --text-light: #fafafa;
+    --text-dark: #353236;
+    --background-light: #efabd0;
+    --highlight-pink: #efabd0;
+    --highlight-blue: #7cf2ec;
+    --highlight-yellow: #fac935;
 }
 
 @font-face {
@@ -23,6 +31,8 @@
 }
 
 body {
+    margin-top: 60px;
+    color: var(--text-light);
     height: 100vh;
     width: 100%;
     background: var(--background);
@@ -52,12 +62,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    width: 300px;
+    width: 100%;
+    top: 0;
+    background: var(--background-light);
+    text-shadow: 0px 0px 2px var(--text-dark);
+    position: absolute;
+    padding: 10px;
+    border-bottom: 4px solid var(--border);
 }
 #newGame {
     padding: 0;
     width: auto;
     font-size: 2rem;
+    background: inherit;
     border: none !important;
 }
 #grid {
@@ -110,6 +127,8 @@ button {
     font-family: inherit;
     cursor: pointer;
     opacity: 1 !important;
+    background: var(--background-button);
+    color: var(--colour-button);
     border: 2px solid var(--border) !important;
 }
 
@@ -131,16 +150,23 @@ button {
 
 #delete {
     width: 25%;
+    background: var(--highlight-yellow);
 }
 
 #submit {
+    background: var(--highlight-blue);
+
+    color: var(--text-dark);
     width: 50%;
 }
 
 #save {
+    background: var(--highlight-yellow);
     width: 25%;
 }
-
+button:focus {
+    outline: none;
+}
 button > span:first-of-type {
     font-size: 5rem;
     pointer-events: none;
@@ -156,6 +182,7 @@ button > span:last-of-type {
 }
 
 .clicked {
+    color: var(--text-dark);
     background: var(--clicked);
 }
 
