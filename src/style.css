@@ -5,10 +5,10 @@
 }
 
 :root {
-    --wrong: red;
-    --good: green;
+    --wrong: darkred;
+    --good: darkgreen;
     --border: #fafafa;
-    --duplicate: blue;
+    --duplicate: #353236;
     --clicked: #7cf2ec;
     --background: linear-gradient(#fac935, #efabd0, #7cf2ec);
     --background-button: #353236;
@@ -146,6 +146,8 @@ button {
 .btn-group > button {
     padding: 0;
     font-size: 2rem;
+    text-shadow: 0px 0px 2px var(--text-light);
+
     /* margin: 0.4rem; */
 }
 
@@ -184,6 +186,7 @@ button > span:last-of-type {
 
 .clicked {
     color: var(--text-dark);
+    text-shadow: 0px 0px 2px var(--text-light);
     background: var(--clicked);
 }
 
