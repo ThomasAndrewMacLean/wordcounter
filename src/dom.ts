@@ -8,3 +8,6 @@ export const scoreElement = el('score');
 export const wordsModal = el('wordsModal');
 export const saveButton = el('save');
 export const newGameButton = el("newGame")
+export const red=el("red")
+export const orange=el("orange")
+export const green=el("green")

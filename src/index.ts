@@ -1,5 +1,5 @@
-import { grid, wordElement, deleteButton, submitButton, scoreElement, wordsModal, saveButton, newGameButton } from './dom';
-import { BOARDSIZE, URL } from './constanst';
+import { red,orange,green, grid, wordElement, deleteButton, submitButton, scoreElement, wordsModal, saveButton, newGameButton } from './dom';
+import { BOARDSIZE, URL,blinkTime } from './constanst';
 import { getLetter, getWordValue, getUserName, getPoint } from './utils';
 import{OpponentGameType} from "./types"
 
@@ -71,11 +71,11 @@ submitButton.addEventListener('click', () => {
     }
 
     if (wordsFound.includes(wordToSend)) {
-        grid.classList.add('duplicate');
+        orange.classList.add('active');
 
         setTimeout(() => {
-            grid.classList.remove('duplicate');
-        }, 600);
+            orange.classList.remove('active');
+        }, blinkTime);
 
         return;
     }
@@ -98,18 +98,18 @@ submitButton.addEventListener('click', () => {
                     window.navigator.vibrate([100, 30, 100]);
                 }
 
-                grid.classList.add('good');
+                green.classList.add('active');
 
                 setTimeout(() => {
-                    grid.classList.remove('good');
-                }, 600);
+                    green.classList.remove('active');
+                }, blinkTime);
             } else {
                 // wrong word
-                grid.classList.add('wrong');
+                red.classList.add('active');
 
                 setTimeout(() => {
-                    grid.classList.remove('wrong');
-                }, 600);
+                    red.classList.remove('active');
+                }, blinkTime);
             }
         });
 });

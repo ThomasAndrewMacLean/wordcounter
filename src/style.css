@@ -55,7 +55,79 @@ h1 {
 #word {
     font-size: 1.5rem;
     height: 2rem;
+}
+
+#word-wrapper {
     position: relative;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+#trafficLight {
+    position: absolute;
+    right: 12px;
+    height: 20px;
+    width: 80px;
+    /* outline: 1px solid black; */
+    top: 4px;
+    display: flex;
+}
+#trafficLight > p {
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    border: 4px solid var(--text-light);
+}
+#green {
+    background: rgba(85, 204, 85, 0.3);
+    transition: background-color linear 0.5s;
+}
+#orange {
+    background: rgba(255, 152, 0, 0.3);
+    transition: background-color linear 0.5s;
+}
+#red {
+    background: rgba(255, 87, 34, 0.3);
+    transition: background-color linear 0.5s;
+}
+#green.active {
+    background: rgba(85, 204, 85, 1);
+}
+#orange.active {
+    background: rgba(255, 152, 0, 1);
+}
+#red.active {
+    background: rgba(255, 87, 34, 1);
+}
+
+.active::after {
+    height: 100%;
+
+    /* top: 0; */
+    content: '';
+    background: white;
+    position: absolute;
+    opacity: 1;
+    transform: rotate(45deg);
+    z-index: 1;
+    animation: blink 1.6s;
+    width: 4px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+        /* background: red; */
+    }
+    50% {
+        opacity: 0.5;
+        /* background: red; */
+    }
+    80% {
+        opacity: 0.2;
+        /* background: green; */
+    }
 }
 
 header {
@@ -86,7 +158,7 @@ header {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
-
+/* 
 #grid.wrong {
     border: 2px solid var(--wrong);
 
@@ -114,7 +186,7 @@ header {
 
 #grid.good > button {
     border: 2px solid var(--good) !important;
-}
+} */
 
 button {
     padding: 20% 0;

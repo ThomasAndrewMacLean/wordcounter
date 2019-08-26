@@ -33,3 +33,4 @@ export const points: { [key: string]: number } = {
     z: 6,
 };
 
+export const blinkTime = 1000;
