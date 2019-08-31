@@ -63,6 +63,7 @@ h1 {
     width: 100%;
     text-align: center;
 }
+
 #help {
     font-size: 2rem;
     position: absolute;
@@ -78,30 +79,37 @@ h1 {
     top: 4px;
     display: flex;
 }
-#trafficLight > p {
+
+#trafficLight>p {
     height: 25px;
     width: 25px;
     border-radius: 25px;
     border: 4px solid var(--text-light);
 }
+
 #green {
     background: rgba(85, 204, 85, 0.3);
     transition: background-color linear 0.5s;
 }
+
 #orange {
     background: rgba(255, 152, 0, 0.3);
     transition: background-color linear 0.5s;
 }
+
 #red {
     background: rgba(255, 87, 34, 0.3);
     transition: background-color linear 0.5s;
 }
+
 #green.active {
     background: rgba(85, 204, 85, 1);
 }
+
 #orange.active {
     background: rgba(255, 152, 0, 1);
 }
+
 #red.active {
     background: rgba(255, 87, 34, 1);
 }
@@ -125,10 +133,12 @@ h1 {
         opacity: 0;
         /* background: red; */
     }
+
     50% {
         opacity: 0.5;
         /* background: red; */
     }
+
     80% {
         opacity: 0.2;
         /* background: green; */
@@ -147,6 +157,7 @@ header {
     padding: 10px;
     border-bottom: 4px solid var(--border);
 }
+
 #newGame {
     padding: 0;
     width: auto;
@@ -154,6 +165,7 @@ header {
     background: inherit;
     border: none !important;
 }
+
 #grid {
     border: 2px solid var(--border);
     border-radius: 5px;
@@ -163,6 +175,7 @@ header {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
+
 /* 
 #grid.wrong {
     border: 2px solid var(--wrong);
@@ -221,7 +234,7 @@ button {
     margin: 10px 0;
 }
 
-.btn-group > button {
+.btn-group>button {
     padding: 0;
     font-size: 2rem;
     text-shadow: 0px 0px 2px var(--text-light);
@@ -245,15 +258,17 @@ button {
     background: var(--highlight-yellow);
     width: 25%;
 }
+
 button:focus {
     outline: none;
 }
-button > span:first-of-type {
+
+button>span:first-of-type {
     font-size: 5rem;
     pointer-events: none;
 }
 
-button > span:last-of-type {
+button>span:last-of-type {
     /* font-size: 5rem; */
     pointer-events: none;
     position: absolute;
@@ -280,7 +295,7 @@ ul#wordsModal {
     z-index: 1;
 }
 
-ul#wordsModal > li {
+ul#wordsModal>li {
     width: 100vw;
     padding: 5px;
 }

@@ -1,7 +1,19 @@
-import { red,orange,green, grid, wordElement, deleteButton, submitButton, scoreElement, wordsModal, saveButton, newGameButton } from './dom';
-import { BOARDSIZE, URL,blinkTime } from './constanst';
+import {
+    red,
+    orange,
+    green,
+    grid,
+    wordElement,
+    deleteButton,
+    submitButton,
+    scoreElement,
+    wordsModal,
+    saveButton,
+    newGameButton,
+} from './dom';
+import { BOARDSIZE, URL, blinkTime } from './constanst';
 import { getLetter, getWordValue, getUserName, getPoint } from './utils';
-import{OpponentGameType} from "./types"
+import { OpponentGameType } from './types';
 
 import './style.css';
 
@@ -14,8 +26,8 @@ let opponentScore = 0;
 let opponentWords: string[] = [];
 
 const addLetter = (e: MouseEvent, index: number, letter: string): void => {
-    if (!e.target || (<HTMLButtonElement>e.target).classList.contains('clicked')) return;
-    (<HTMLButtonElement>e.target).classList.add('clicked');
+    if (!e.target || (e.target as HTMLButtonElement).classList.contains('clicked')) return;
+    (e.target as HTMLButtonElement).classList.add('clicked');
     word.push(letter);
     cellClicked.push(index);
     wordElement.innerHTML = word.join('');
@@ -53,7 +65,7 @@ deleteButton.addEventListener('click', () => {
     word.pop();
     wordElement.innerHTML = word.join('');
     const lastIndex = cellClicked.pop();
-    const lastButtonClicked =document.getElementById('btn-' + lastIndex)
+    const lastButtonClicked = document.getElementById('btn-' + lastIndex);
     lastButtonClicked && lastButtonClicked.classList.remove('clicked');
 });
 
@@ -132,10 +144,9 @@ wordsModal.addEventListener('click', () => {
     wordsModal.innerHTML = '';
 });
 
-newGameButton.addEventListener("click",() => {
-
-  setupBoard()  
-})
+newGameButton.addEventListener('click', () => {
+    setupBoard();
+});
 saveButton.addEventListener('click', () => {
     fetch(URL + '/database', {
         method: 'POST',
@@ -152,7 +163,7 @@ saveButton.addEventListener('click', () => {
     })
         .then(jsonData => jsonData.json())
         .then(data => {
-            history.pushState(null, "", '#' + data.body.split('"').join(''));
+            history.pushState(null, '', '#' + data.body.split('"').join(''));
             console.log(data);
             if (navigator.share) {
                 navigator.share({
@@ -175,7 +186,7 @@ if (window.location.hash) {
             console.log(prevGame);
             if (prevGame.Item) {
                 opponentScore = prevGame.Item.score.N;
-                opponentWords = prevGame.Item.wordsFound.L.map((x:{S:string}) => x.S);
+                opponentWords = prevGame.Item.wordsFound.L.map((x: { S: string }) => x.S);
 
                 console.log(opponentScore);
 

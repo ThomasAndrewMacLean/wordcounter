@@ -1,4 +1,9 @@
 import { points, letters } from './constanst';
+
+export const getPoint = (letter: string): number => {
+    return points[letter];
+};
+
 export const getWordValue = (word: string): number => {
     return word.split('').reduce((total, letter) => {
         return (total += getPoint(letter));
@@ -17,7 +22,3 @@ export const getUserName = (): string => {
     window.localStorage.setItem('userName', name);
     return name;
 };
-
-export const getPoint = (letter: string): number => {
-        return points[letter];
-}
